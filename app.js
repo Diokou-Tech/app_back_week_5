@@ -3,10 +3,11 @@ const express = require('express');
 const app = express();
 const Files = require("fileworkdiokou");
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 require('dotenv').config();
 const {PORT, DB_URI_WEB,DB_URI} = process.env;
 // configuration app express
+app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 // connect mongodb database 
