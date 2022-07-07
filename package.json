@@ -1,0 +1,19 @@
+{
+  "name": "app_back_assignement_5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diokou Tech",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "fileworkdiokou": "^2.0.0",
+    "mongoose": "^6.4.1",
+    "nodemon": "^2.0.18"
+  }
+}
