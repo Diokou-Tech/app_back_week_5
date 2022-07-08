@@ -14,6 +14,7 @@ module.exports.getOne = async (req,res)=>{
 }
 module.exports.insertOne = async (req,res)=>{
     try{
+        console.log('data',req.body);
         const result =  await EleveService.insertOne(req.body);
         res.send(result);
     }
