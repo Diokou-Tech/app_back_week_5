@@ -11,13 +11,13 @@ module.exports.getOne = async (req,res)=>{
     res.send(result);
 }
 module.exports.insertOne = async (req,res)=>{
-    console.log('insert One');
     const item = req.body;
+    console.log('insert One affectation');
     try{
         const result = await affectationService.insertOne(item);
-        res.status(204).send(result);
+        res.status(204).send({status : true , data : result});
     }catch(error){
-        res.send({status: false, error: error});
+        res.send({status: false, error: error.message});
     }
 }
 module.exports.deleteOne = async (req,res)=>{

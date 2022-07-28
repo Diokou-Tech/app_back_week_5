@@ -9,7 +9,7 @@ function insertOne(item){
     return result;
 }
 function getOne(id){
-    const result = classe.find({"_id": id});
+    const result = classe.findOne({"_id": id});
     return result;
 }
 function deleteOne(id){

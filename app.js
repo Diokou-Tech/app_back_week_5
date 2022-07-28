@@ -26,7 +26,6 @@ function bootstrap(){
     for (var i = 0; i < routes.length; i++)
     if (routes[i].indexOf("routes") !== -1) 
   {
-        console.log('test');
       require(routes[i])(app);
   }
   
