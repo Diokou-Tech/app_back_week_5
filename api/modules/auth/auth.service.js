@@ -1,8 +1,7 @@
 const userService = require('../users/users.service');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-// const { KEY_TOKEN } = process.env;
-const KEY_TOKEN = "diokoutechschoolkey";
+const { KEY_TOKEN } = process.env;
 module.exports.login = async function (item){
     // verif email user
     let user = await userService.findByEmail(item.email);
@@ -13,7 +12,7 @@ module.exports.login = async function (item){
             let session = createToken(user);
             return {status: true, session};
         }else{
-        return {status : false, message : "Identifiants incorrectes ! ou Compte désactivé !"};
+        return {status : false, message : "Identifiants incorrectes ! ou Compte désactivé ! "};
         }
     }
 }
