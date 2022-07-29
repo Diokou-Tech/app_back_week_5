@@ -8,7 +8,7 @@ module.exports.login = async function (item){
     if(!user){
         return {status : false, message : "Adresse introuvable !"}
     }else{
-        if(user.password == item.password && user.active == true){
+        if(user.password == item.password){
             let session = createToken(user);
             return {status: true, session};
         }else{
