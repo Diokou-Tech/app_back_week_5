@@ -5,11 +5,14 @@ const Files = require("fileworkdiokou");
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-const {PORT, DB_URI_WEB,DB_URI} = process.env;
+// const {PORT, DB_URI_WEB,DB_URI} = process.env;
 // configuration app express
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
+const DB_URI_WEB="mongodb+srv://zola:zola@cluster0.zqkhzb3.mongodb.net/school?retryWrites=true&w=majority";
+const PORT = 4000;
+
 // connect mongodb database 
 mongoose.connect(DB_URI_WEB).
 then((connect)=>{

@@ -1,7 +1,8 @@
 const userService = require('../users/users.service');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const { KEY_TOKEN } = process.env;
+// const { KEY_TOKEN } = process.env;
+const KEY_TOKEN = "diokoutechschoolkey";
 module.exports.login = async function (item){
     // verif email user
     let user = await userService.findByEmail(item.email);
