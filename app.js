@@ -29,8 +29,8 @@ function bootstrap(){
       require(routes[i])(app);
   }
   
-app.get('/test', (req,res)=>{
-    res.send('Test server'); 
+app.get('/', (req,res)=>{
+    res.send('Welcome to api for assignement week 5 !'); 
 })
 app.listen(PORT, function(){
     console.log('server listening  on port ' + PORT +' ! ');
