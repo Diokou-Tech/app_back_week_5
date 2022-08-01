@@ -16,6 +16,9 @@ module.exports.login = async function (item){
         }
     }
 }
+module.exports.logout = async (token)=>{
+    const result = jwt.
+}
 module.exports.register = async function (item){
     let user = await userService.insertOne(item);
     return user;
@@ -24,7 +27,15 @@ module.exports.findAll = ()=> {
     return userService.findAll();
 }
 module.exports.verifToken = function (token){
-
+    return new Promise((resolve,reject)=>{
+        jwt.verify(token,KEY_TOKEN,null,(error,decoded)=>{
+            if(error){
+            reject(false);
+        }else{
+            resolve(decoded);
+        }
+    });
+    })
 }
 function createToken(user){
     user = {...user.toObject()};

@@ -12,7 +12,6 @@ module.exports.getOne = async (req,res)=>{
 }
 module.exports.insertOne = async (req,res)=>{
     const item = req.body;
-    console.log('insert One affectation');
     try{
         const result = await affectationService.insertOne(item);
         res.status(204).send({status : true , data : result});

@@ -1,10 +1,9 @@
 const EleveService = require('./eleves.services');
-// const url_front= 'http://localhost:4200';
-const header = 'Access-Control-Allow-Origin';
+const multer = require("multer");
+const uploadFile = multer({ dest: "./api/uploads"});
+
 module.exports.getAll = async (req,res)=>{
-    console.log(req.body);
     const eleves = await EleveService.findAll();
-    // res.set(header,url_front);
     res.send(eleves);
 }
 module.exports.getOne = async (req,res)=>{
@@ -14,12 +13,10 @@ module.exports.getOne = async (req,res)=>{
 }
 module.exports.insertOne = async (req,res)=>{
     try{
-        console.log('data',req.body);
         const result =  await EleveService.insertOne(req.body);
         res.send(result);
     }
     catch(error){
-        console.log('error new' + error);
         res.status(204).send({status: false,error: error});
     }
 }
