@@ -12,6 +12,8 @@ const upload = require("./api/uploads/upload");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// config files statics
+app.use(express.static('views'));
 // connect mongodb database
 mongoose
   .connect(DB_URI_WEB)
@@ -32,7 +34,8 @@ function bootstrap() {
       require(routes[i])(app);
     }
     app.get("/", (req, res) => {
-    res.send("Welcome to api for assignement week 5 !");
+    // res.send("Welcome to api for assignement week 5 !");
+    res.sendFile("views/index.html");
   });
   app.post("/profil", upload.single("profil"), (req, res) => {
     const uploaded = req.file;
