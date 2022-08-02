@@ -31,14 +31,7 @@ function bootstrap() {
     if ( routes[i].indexOf("routes") !== -1 && routes[i].indexOf("routes.public") != -1 ) {
       require(routes[i])(app);
     }
-    // add auth gard 
-    require('./api/modules/auth/auth.gard')(app);
-    // Import private routes 
-    for (var i = 0; i < routes.length; i++)
-    if ( routes[i].indexOf("routes") !== -1 && routes[i].indexOf("routes.public") == -1 ) {
-      require(routes[i])(app);
-    }
-  app.get("/", (req, res) => {
+    app.get("/", (req, res) => {
     res.send("Welcome to api for assignement week 5 !");
   });
   app.post("/profil", upload.single("profil"), (req, res) => {
@@ -46,6 +39,13 @@ function bootstrap() {
     console.log(uploaded);
     res.send(uploaded);
   });
+    // add auth gard 
+    require('./api/modules/auth/auth.gard')(app);
+    // Import private routes 
+    for (var i = 0; i < routes.length; i++)
+    if ( routes[i].indexOf("routes") !== -1 && routes[i].indexOf("routes.public") == -1 ) {
+      require(routes[i])(app);
+    }
   app.listen(PORT, function () {
     console.log("server listening  on port " + PORT + " ! ");
   });
