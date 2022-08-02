@@ -16,9 +16,7 @@ module.exports.login = async function (item){
         }
     }
 }
-module.exports.logout = async (token)=>{
-    const result = jwt.
-}
+
 module.exports.register = async function (item){
     let user = await userService.insertOne(item);
     return user;
