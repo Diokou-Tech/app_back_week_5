@@ -8,7 +8,12 @@ module.exports =  function(app){
         const authorization = req.headers.authorization;
         if(authorization){
             const token = authorization.replace("Bearer ","");
-            const validationToken = await authService.verifToken(token);
+            let validationToken = null;
+            try{
+                validationToken = await authService.verifToken(token);
+            }catch(error){
+                console.log(error);
+            }
             if(validationToken){
                 req.user = validationToken;
                 next();

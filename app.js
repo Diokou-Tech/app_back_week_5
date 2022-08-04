@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('views'));
 // connect mongodb database
 mongoose
-  .connect(DB_URI_WEB)
+  .connect(DB_URI)
   .then((connect) => {
     console.log("Connected database");
     bootstrap();
