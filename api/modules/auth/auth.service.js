@@ -38,7 +38,6 @@ module.exports.verifToken = function (token){
         }
     });
     })
-    console.log(result);
     return result;
 }
 function createToken(user){

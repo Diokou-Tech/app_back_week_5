@@ -11,13 +11,10 @@ module.exports =  function(app){
             let validationToken = null;
             try{
                 validationToken = await authService.verifToken(token);
-            }catch(error){
-                console.log(error);
-            }
-            if(validationToken){
                 req.user = validationToken;
                 next();
-            }else{
+            }catch(error){
+                console.log(error);
                 res.status(403).send("Token Expired please reconnect  !");
             }
         }else{

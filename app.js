@@ -15,8 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 // config files statics
 app.use(express.static('views'));
 // connect mongodb database
-mongoose
-  .connect(DB_URI)
+mongoose.connect(DB_URI_WEB)
   .then((connect) => {
     console.log("Connected database");
     bootstrap();
@@ -37,7 +36,9 @@ function bootstrap() {
     // res.send("Welcome to api for assignement week 5 !");
     res.sendFile("views/index.html");
   });
-  app.post("/profil", upload.single("profil"), (req, res) => {
+  app.post("/profil", async (req, res) => {
+    let file =  await upload.single("profil")(req,res);
+    console.log(file);
     const uploaded = req.file;
     console.log(uploaded);
     res.send(uploaded);
