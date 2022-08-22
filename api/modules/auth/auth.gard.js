@@ -6,15 +6,16 @@ const {TOKEN_KEY} = process.env;
 module.exports =  function(app){
     app.use(async (req,res,next)=>{
         const authorization = req.headers.authorization;
+        console.log({authorization});
         if(authorization){
             const token = authorization.replace("Bearer ","");
-            let validationToken = null;
+            console.log({token});
             try{
                 validationToken = await authService.verifToken(token);
                 req.user = validationToken;
                 next();
             }catch(error){
-                console.log(error);
+                console.log(error.message);
                 res.status(403).send("Token Expired please reconnect  !");
             }
         }else{

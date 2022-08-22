@@ -40,7 +40,7 @@ module.exports.verifToken = function (token){
     })
     return result;
 }
-function createToken(user){
+function createToken(user){ 
     user = {...user.toObject()};
     delete user.password;
     let token = jwt.sign({user},KEY_TOKEN,{ expiresIn: "3h" });

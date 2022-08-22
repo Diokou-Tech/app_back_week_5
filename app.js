@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const { PORT, DB_URI_WEB, DB_URI } = process.env;
-const upload = require("./api/uploads/upload");
+const upload = require("./api/uploads/upload").handleFile;
 
 // configuration app express
 app.use(cors());
@@ -35,13 +35,6 @@ function bootstrap() {
     app.get("/", (req, res) => {
     // res.send("Welcome to api for assignement week 5 !");
     res.sendFile("views/index.html");
-  });
-  app.post("/profil", async (req, res) => {
-    let file =  await upload.single("profil")(req,res);
-    console.log(file);
-    const uploaded = req.file;
-    console.log(uploaded);
-    res.send(uploaded);
   });
     // add auth gard 
     require('./api/modules/auth/auth.gard')(app);

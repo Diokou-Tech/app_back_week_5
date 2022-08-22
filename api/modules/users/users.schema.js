@@ -5,8 +5,9 @@ const userSchema = new mongoose.Schema({
     nom: {type : String,required : true},
     prenom: {type : String,required : true},
     password: {type : String,required : true},
-    active : {type : Boolean, default: false}
-},{TimeRanges: true});
+    active : {type : Boolean, default: false},
+    profil_url: {type: String}
+},{ timestamps: true });
 // define model user
 const model = mongoose.model('user',userSchema);
 // export 
